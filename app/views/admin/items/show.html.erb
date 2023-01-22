@@ -1,0 +1,16 @@
+<h1>商品詳細</h1>
+<% if @item.image.attached? %>
+<%=image_tag @item.image, size: "200x200" %>
+<% else %>
+ <%= image_tag 'no_image', size: "200x200" %>
+ <% end %>
+<th>商品名</th>
+<td><%= @item.name %></td></br>
+<th>商品説明</th>
+<td><%= @item.introduction %></td></br>
+<th>
+ 税込価格</br>
+ (税抜価格）</th>
+<td><%= @item.add_tax_sales_price.to_s(:dalimited) %>(<%= @item.price %>)円</td></br>
+
+<%= link_to "編集する", edit_admin_item_path(@item.id) %>
