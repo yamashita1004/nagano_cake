@@ -1,0 +1,37 @@
+<%= form_with model: @customer, url: admin_customer_path(@customer.id) do |f| %>
+ <th>会員id</th>
+ <td><%= @customer.id %></td>
+<div class ="field">
+    <%= f.label :last_name %></br>
+    <%= f.text_field :last_name %>
+  </div>
+  <div class ="field">
+    <%= f.label :first_name %></br>
+    <%= f.text_field :first_name %>
+  </div>
+   <div class ="field">
+    <%= f.label :last_name_kana %></br>
+    <%= f.text_field :last_name_kana %>
+  </div>
+  <div class ="field">
+    <%= f.label :first_name_kanaa %></br>
+    <%= f.text_field :first_name_kana %>
+  </div>
+  <div class ="field">
+    <%= f.label :postal_code %></br>
+    <%= f.text_field :postal_code %>
+  </div>
+  <div class ="field">
+    <%= f.label :address %></br>
+    <%= f.text_field :address %>
+  </div>
+  <div class ="field">
+    <%= f.label :telephone_number %></br>
+    <%= f.text_field :telephone_number %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+  <%= f.submit '変更を保存' %>
+  <% end %>
