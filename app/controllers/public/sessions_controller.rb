@@ -27,7 +27,7 @@ class Public::SessionsController < Devise::SessionsController
   
    protected
    def after_sign_in_path_for(resource)
-   public_about_path
+   public_path
    end
 
    def after_sign_out_path_for(resource)

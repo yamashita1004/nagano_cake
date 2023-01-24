@@ -1,7 +1,7 @@
 <h1>商品一覧</h1>
 
  <%= link_to '新規登録', new_admin_item_path %>
-<table class='table table-hover table-inverse'>
+     <table class='table table-hover table-inverse'>
 
       <tr>
       <th>商品id</th>
@@ -20,7 +20,12 @@
        </td>
        <td>
          <%= item.price %>
-       </td>
+        </td>
+        <% if item.is_active  %>
+        <td>販売中</td></br>
+        <% else %>
+        <td>販売停止中</td></br>
+        <% end %>
 
       </tr>
       <% end %>
