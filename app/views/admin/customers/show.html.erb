@@ -1,3 +1,4 @@
+
 <h4>
   <%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細
 </h4>
@@ -19,4 +20,5 @@
 <th>ステータス</th></br>
 <td></td>
 
-<%= link_to "編集する",  edit_admin_customer_path(@customer.id) %>
+<%= link_to "編集する",  edit_admin_customer_path(@customer.id), class:"btn btn-success"%>
+<%= link_to "注文一覧を見る","", class:"btn btn-primary"%>

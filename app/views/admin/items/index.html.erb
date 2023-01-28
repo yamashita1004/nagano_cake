@@ -1,32 +1,31 @@
-<h1>商品一覧</h1>
+<h4>商品一覧</h4>
 
- <%= link_to '新規登録', new_admin_item_path %>
-     <table class='table table-hover table-inverse'>
+        <%= link_to '新規登録', new_admin_item_path %>
+        <table class='table table-hover table-inverse'>
+            <tr>
+            <th>商品id</th>
+            <th>商品名</th>
+            <th>税抜価格</th>
+            <th>販売ステータス</th>
+            <th><colspan="3"></th>
+            </tr>
+            <% @items.each do |item| %>
+            <tr>
+            <td>
+            <%= item.id %>
+            </td>
+            <td>
+            <%=link_to  item.name, admin_item_path(item.id)%>
+            </td>
+            <td>
+            <%= item.price %>
+            </td>
+            <% if item.is_active  %>
+            <td class="text-success">販売中</td></br>
+            <% else %>
+            <td class="text-secondary">販売停止中</td></br>
+            <% end %>
 
-      <tr>
-      <th>商品id</th>
-      <th>商品名</th>
-      <th>税抜価格</th>
-      <th>販売ステータス</th>
-      <th><colspan="3"></th>
-      </tr>
-      <% @items.each do |item| %>
-      <tr>
-        <td>
-          <%= item.id %>
-        </td>
-      <td>
-         <%=link_to  item.name, admin_item_path(item.id)%>
-       </td>
-       <td>
-         <%= item.price %>
-        </td>
-        <% if item.is_active  %>
-        <td>販売中</td></br>
-        <% else %>
-        <td>販売停止中</td></br>
-        <% end %>
-
-      </tr>
-      <% end %>
-      </table>
+            </tr>
+            <% end %>
+        </table>

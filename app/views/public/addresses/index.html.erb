@@ -1,0 +1,36 @@
+
+<h2>配達先登録/一覧</h2>
+<%= form_with model: @address, url: public_addresses_path do |f| %>
+
+
+<th>郵便番号（ハイフンなし）</th>
+<td><%= f.text_field :postal_code %></td></br>
+<th>住所</th>
+<td><%= f.text_field :address %></td></br>
+<th>宛名</th>
+<td><%= f.text_field :name %></td>
+
+<%= f.submit '新規登録' %>
+<% end %>
+         <div>
+        <table class='table table-hover table-inverse'>
+
+        <tr>
+        <th>郵便番号</th>
+        <th>住所</th>
+        <th>宛名</th>
+        <th><colspan="3"></th>
+        </tr>
+        <% @addresses.each do |address| %>
+        <tr>
+        <td><%= address.postal_code %></td>
+        <td><%= address.address %></td>
+        <td><%= address.name %></td>
+        <td>
+          <%=link_to "編集する" , edit_public_address_path(address.id), class:"btn btn-success"%>
+          <%= link_to"削除する",public_address_path(address.id),method: :delete,"data-confirm"=>"本当に削除しますか？",class:"btn btn-danger" %>
+        </td>
+        </tr>
+        <% end %>
+        </table>
+        </div>

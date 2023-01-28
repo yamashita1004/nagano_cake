@@ -1,26 +1,18 @@
-<div class="main-visual mt-5 mb-5">
-  <div class="main_back ">
 
-
-        <span>
-        ようこそ、ながのCAKEへ！</br>
-        このサイトは、ケーキ販売のECサイトになります。</br>
-        会員でない方も商品の閲覧はできますが、</br>
-        購入には会員登録が必要になります。
-        </span>
-  </div>
-</div>
-     <div class="container mt-3">
+<h1>商品一覧</h1>
+ <div class="container mt-3">
        <h3 class="text-color text-center col-3 pt-2 pb-2 rounded-pill"><strong>新着商品</strong></h3>
        <div class="row">
-        <% @items.last(4).reverse.each do |item| %>
+        <% @items.each do |item| %>
         <div class="card-group">
           <div class ="card card border-light mb-3 ml-2 mr-2">
             <div class ="card-img-top">
-              <% if item.image.attached? %>
-              <%=image_tag item.image, size: "200x200" %>
-              <% else %>
-              <%= image_tag 'no_image', size: "200x200" %>
+              <%= link_to public_item_path(item.id) do %>
+                  <% if item.image.attached? %>
+                  <%=image_tag item.image, size: "200x200" %>
+                  <% else %>
+                  <%= image_tag 'no_image', size: "200x200" %>
+                  <% end %>
               <% end %>
             </div>
                   <div class="card-body">

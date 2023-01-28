@@ -3,7 +3,7 @@
   マイページ
 </h4>
 <th>登録情報</th>
-<td><%= link_to "編集する",  edit_public_customer_path(current_customer.id) %></td></br>
+<td><%= link_to "編集する",  edit_public_customer_path(@customer.id) %></td></br>
 <th>会員id</th>
 <td><%= @customer.id %></td></br>
 <th>氏名</th>
@@ -19,4 +19,5 @@
 <th>メールアドレス</th>
 <td><%= @customer.email %></td></br>
 
-
+<th>配達先</th>
+<td><%= link_to"配達先一覧をみる", public_addresses_path %></td></br>
