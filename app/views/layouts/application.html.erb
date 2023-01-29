@@ -13,7 +13,7 @@
   <body>
     <header>
       <% if customer_signed_in? %>
-      
+
       <li>
         <%= link_to "マイページ",  public_customer_path(current_customer.id) %>
       </li>
@@ -21,7 +21,7 @@
         <%= link_to "商品一覧", public_items_path %>
       </li>
       <li>
-        <%= link_to "カート",  "" %>
+        <%= link_to "カート",  public_cart_items_path %>
       </li>
       <li>
         <%= link_to "ログアウト",  destroy_customer_session_path, method: :delete %>

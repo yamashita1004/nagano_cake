@@ -1,0 +1,38 @@
+<h1>Public::Orders#new</h1>
+<p>Find me in app/views/public/orders/new.html.erb</p>
+<p>支払い方法</p>
+<%= form_with model: @order, url: public_orders_confirm_path do |f| %>
+<%= f.radio_button :payment_method, "credit_card" %>
+<%= f.label :payment_method_credit_card, "クレジットカード" %></br>
+
+<%= f.radio_button :payment_method, "transfer" %>
+<%= f.label :payment_method_transfer, "銀行振込" %></br>
+
+    <%= f.radio_button :address_num,0,  confirm: "confirm" %>
+       <%= f.label :address, "ご自身の住所" %></br>
+       〒<%= current_customer.postal_code %><%= current_customer.address %></br>
+
+       <%= current_customer.last_name %><%= current_customer.first_name %></br>
+
+
+
+      <%= f.radio_button :address_num, 1 %>
+        <%= f.label :address, "選択済み住所から選択" %>
+        <%= f.select :address, options_from_collection_for_select(Address.all, :id, :address_display) %></br>
+
+      <%= f.radio_button :address_num, 2 %>
+      <%= f.label :address, "新しいお届け先" %>
+        <div class="field mb-1">
+          <%= f.label :"郵便番号(ハイフンなし)", class: 'col-4' %>
+          <%= f.text_field :postal_code, autofocus: true, class: 'rounded', placeholder: "0000000" %>
+        </div>
+        <div class="field mb-1">
+          <%= f.label :"住所", class: 'col-4' %>
+          <%= f.text_field :address, autofocus: true, class: 'rounded col-6', placeholder: "東京都渋谷区代々木神園町0-0" %>
+        </div>
+        <div class="field mb-1">
+          <%= f.label :"宛名", class: 'col-4' %>
+          <%= f.text_field :name, autofocus: true, class: 'rounded', placeholder: "令和道子" %>
+        </div>
+        <%= f.submit "確認画面へ進む", class: "btn btn-primary col-3" %>
+<% end %>

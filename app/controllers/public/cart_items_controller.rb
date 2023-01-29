@@ -26,12 +26,12 @@ class Public::CartItemsController < ApplicationController
     cart_item = CartItem.find(params[:id])
     cart_item.destroy
     redirect_to public_cart_items_path
-   end
+  end
    def destroy_all
     CartItem.destroy_all
     current_customer.id.cart_item.destroy_all
     redirect_to public_cart_items_path, notice: 'カートが空になりました。'
-  end
+   end
   private
   def cart_item_params
       params.require(:cart_item).permit(:item_id, :amount)

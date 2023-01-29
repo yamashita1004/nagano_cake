@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  
   namespace :public do
     get '/' => 'homes#top'
     get '/about' => 'homes#about'
@@ -8,6 +9,9 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :show]
     delete '/cart_items/destroy_all' => 'cart_items#destroy_all', as: 'destroy_all_cart_items'
     resources :cart_items, only: [:index, :update, :create, :destroy]
+    get 'orders/thanks' => 'orders#thanks'
+    post 'orders/confirm' => 'orders#confirm'
+    resources :orders ,only: [:new, :index, :show,:create]
   end
   namespace :admin do
     get '/' => 'homes#top'
