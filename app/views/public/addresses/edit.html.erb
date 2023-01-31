@@ -1,13 +1,42 @@
 
-<%= form_with model: @address, url: public_address_path(@address.id) do |f| %>
-<h4>配達先編集</h4>
-<th>郵便番号（ハイフンなし）</th>
-<td><%= f.text_field :postal_code %></td></br>
-<th>住所</th>
-<td><%= f.text_field :address %></td></br>
-<th>宛名</th>
-<td><%= f.text_field :name %></td>
+<div class="container">
+  <div class="row">
+    <div class="col-7 mb-3">
+      <h4 class="mb-4 text-color col-4 text-center pb-2 pt-2 rounded-pill">配達先編集</h4>
 
-<%= f.submit '変更内容を保存' %>
-
-<% end %>
+       <%= form_with model: @address, url: public_address_path(@address.id) do |f|  %>
+       
+          
+          
+          
+          <div class="field mb-1">
+            <%= f.label :"名前　　　　　　　　　　", class: 'col-3' %>
+            
+            <%= f.text_field :name, autofocus: true, class: 'rounded', placeholder: "令和" %>
+            
+            </div>
+          
+          <div class="field mb-1">
+            <%= f.label :"郵便番号", class: 'col-3' %>
+            <%= f.text_field :postal_code, autofocus: true, class: 'rounded', placeholder: "0000000" %>
+          </div>
+          
+          <div class="field mb-1">
+            <%= f.label :"住所", class: 'col-3' %>
+            <%= f.text_field :address, autofocus: true, class: 'rounded', placeholder: "東京都渋谷区代々木神園町0-0" %>
+          </div>
+        
+        
+          <div class="actions mb-3">
+            <%= f.label :"　", class: 'col-3' %>
+            <%= f.submit "編集内容を保存する", class: 'btn btn-primary col-3' %>
+           
+          </div>
+        <% end %>
+    </div>
+    
+    <div class="col-5 mypage_edit"></div>
+    
+    
+  </div>
+</div>

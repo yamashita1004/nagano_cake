@@ -1,38 +1,61 @@
 
-<%= form_with model: @customer, url: public_customer_path(@customer.id) do |f| %>
- <th>会員id</th>
- <td><%= @customer.id %></td>
-<div class ="field">
-    <%= f.label :last_name %></br>
-    <%= f.text_field :last_name %>
+  <div class="container">
+  <div class="row">
+    <div class="col-7 mb-3">
+      <h4 class="mb-4 text-color col-4 text-center pb-2 pt-2 rounded-pill">会員情報編集</h4>
+
+        <%= form_with model: @customer, url: public_customer_path(@customer.id) do |f| %>
+       
+          
+          
+          
+          <div class="field mb-1">
+            <%= f.label :"名前　　　　　　　　　　", class: 'col-3' %>
+            
+            <%= f.text_field :last_name, autofocus: true, class: 'rounded', placeholder: "令和" %>
+            <%= f.label :"　 　", class: '' %>
+            <%= f.text_field :first_name, autofocus: true, class: 'rounded', placeholder: "道子" %>
+            </div>
+          
+          <div class="field mb-1">
+            <%= f.label :"フリガナ　　　　　　　　　", class: 'col-3' %>
+            
+            <%= f.text_field :last_name_kana, autofocus: true, class: 'rounded', placeholder: "レイワ" %>
+            <%= f.label :"　  　", class: '' %>
+            <%= f.text_field :first_name_kana, autofocus: true, class: 'rounded', placeholder: "ミチコ" %>
+          </div>
+        
+          <div class="field mb-1">
+            <%= f.label :"メールアドレス", class: 'col-3' %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'rounded', placeholder: "sample@examle.com" %>
+          </div>
+          
+          <div class="field mb-1">
+            <%= f.label :"郵便番号", class: 'col-3' %>
+            <%= f.text_field :postal_code, autofocus: true, class: 'rounded', placeholder: "0000000" %>
+          </div>
+          
+          <div class="field mb-1">
+            <%= f.label :"住所", class: 'col-3' %>
+            <%= f.text_field :address, autofocus: true, class: 'rounded', placeholder: "東京都渋谷区代々木神園町0-0" %>
+          </div>
+          
+          <div class="field mb-2">
+            <%= f.label :"電話番号", class: 'col-3' %>
+            <%= f.text_field :telephone_number, autofocus: true, class: 'rounded', placeholder: "00000000000" %>
+          </div>
+        
+        
+          <div class="actions mb-3">
+            <%= f.label :"　", class: 'col-3' %>
+            <%= f.submit "編集内容を保存する", class: 'btn btn-primary col-3' %>
+            <%= link_to '退会する', public_customers_quit_path, class:'btn btn-primary ml-5' %>
+          </div>
+        <% end %>
+    </div>
+    
+    <div class="col-5 mypage_edit"></div>
+    
+    
   </div>
-  <div class ="field">
-    <%= f.label :first_name %></br>
-    <%= f.text_field :first_name %>
-  </div>
-   <div class ="field">
-    <%= f.label :last_name_kana %></br>
-    <%= f.text_field :last_name_kana %>
-  </div>
-  <div class ="field">
-    <%= f.label :first_name_kanaa %></br>
-    <%= f.text_field :first_name_kana %>
-  </div>
-  <div class ="field">
-    <%= f.label :postal_code %></br>
-    <%= f.text_field :postal_code %>
-  </div>
-  <div class ="field">
-    <%= f.label :address %></br>
-    <%= f.text_field :address %>
-  </div>
-  <div class ="field">
-    <%= f.label :telephone_number %></br>
-    <%= f.text_field :telephone_number %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-  <%= f.submit '変更を保存' %>
-  <% end %>
+</div>

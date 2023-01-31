@@ -1,2 +1,40 @@
-<h1>Public::Orders#index</h1>
-<p>Find me in app/views/public/orders/index.html.erb</p>
+
+<body>
+  <div class="container">
+    <div class="row">
+
+          <h4 class="mb-4 text-color col-3 text-center  pt-4 rounded-pill">注文履歴一覧</h4>
+          <div class="col-7 order_index_image offset-1"></div>
+
+    </div>
+    <div class="row">
+      <div class="col">
+          <table class="table table-bordered border-dark col-12 mt-3 mb-5">
+              <tr class="table-color">
+                  <th class="table-active">注文日</th>
+                  <th class="table-active">配送先</th>
+                  <th class="table-active">注文商品</th>
+                  <th class="table-active">支払い金額</th>
+                  <th class="table-active">ステータス</th>
+                  <th class="table-active">注文詳細</th>
+              </tr>
+              <% @orders.each do |order| %>
+              <tr>
+                  <td><%= order.updated_at.strftime('%Y/%m/%d') %></td>
+                  <td><%= order.postal_code %><br><%= order.address %><br><%= order.name %></td>
+                  <td>
+                      <% order.order_details.each do |order_detail| %>
+                      <%= order_detail.item.name %>
+                      <% end %>
+                  </td>
+                  <td><%= order.total_payment.to_s(:delimited) %>円</td>
+                  <td><%= order.status %></td>
+                  <td><%= link_to "表示する", public_order_path(order.id),class: "btn btn-primary btn-sm" %></td>
+              </tr>
+              <% end %>
+          </table>
+
+      </div>
+    </div>
+  </div>
+</body>

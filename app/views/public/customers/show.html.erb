@@ -1,23 +1,46 @@
 
-<h4>
-  マイページ
-</h4>
-<th>登録情報</th>
-<td><%= link_to "編集する",  edit_public_customer_path(@customer.id) %></td></br>
-<th>会員id</th>
-<td><%= @customer.id %></td></br>
-<th>氏名</th>
-<td><%= @customer.last_name%><%= @customer.first_name %></td></br>
-<th>フリガナ</th>
-<td><%= @customer.last_name_kana %><%= @customer.first_name_kana %></td></br>
-<th>郵便番号</th>
-<td><%= @customer.postal_code %></td></br>
-<th>住所</th>
-<td><%= @customer.address %></td></br>
-<th>電話番号</th>
-<td><%= @customer.telephone_number %></td></br>
-<th>メールアドレス</th>
-<td><%= @customer.email %></td></br>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
 
-<th>配達先</th>
-<td><%= link_to"配達先一覧をみる", public_addresses_path %></td></br>
+          <h4 class="mb-4 cart-color col-3 text-center text-color rounded-pill pb-2 pt-2">マイページ</h4>
+          <h4 class="font-weight-bold">登録情報 <%= link_to "編集する",  edit_public_customer_path(@customer.id) , class: 'btn btn-primary' %></h4>
+      </div>
+          <table class="table table-bordered border-dark col-6 mt-3 mb-5">
+              <tr>
+                  <th class="table-active col-2 table-color">氏名</th>
+                  <th class="col-4"><%= @customer.last_name%><%= @customer.first_name %></th>
+              </tr>
+              <tr>
+                  <th class="table-active table-color">カナ</th>
+                  <th><%= @customer.last_name_kana %><%= @customer.first_name_kana %></th>
+              </tr>
+              <tr>
+                  <th class="table-active table-color">郵便番号</th>
+                  <th><%= @customer.postal_code %></th>
+              </tr>
+              <tr>
+                  <th class="table-active table-color">住所</th>
+                  <th><%= @customer.address %></th>
+              </tr>
+              <tr>
+                  <th class="table-active table-color">電話番号</th>
+                  <th><%= @customer.telephone_number %></th>
+              </tr>
+              <tr>
+                  <th class="table-active table-color">メールアドレス</th>
+                  <th><%= @customer.email %></th>
+              </tr>
+          </table>
+
+          <div class="col-6 mypage_image"></div>
+      <div class="col-12">
+          <h4 class="font-weight-bold">配送先 <%= link_to "一覧を見る", public_addresses_path , class: 'btn btn-primary col-2' %></h4>
+
+          <h4 class="font-weight-bold mb-4">注文履歴 <%= link_to "一覧を見る",  public_orders_path , class: 'btn btn-primary col-2' %></h4>
+
+      </div>
+    </div>
+  </div>
+</body>

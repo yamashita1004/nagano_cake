@@ -1,37 +1,61 @@
-<%= form_with model: @customer, url: admin_customer_path(@customer.id) do |f| %>
- <th>会員id</th>
- <td><%= @customer.id %></td>
-<div class ="field">
-    <%= f.label :last_name %></br>
-    <%= f.text_field :last_name %>
+
+  <div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="admin-heading col-12">
+        <h2 class="mb-4 pt-3 pb-3 text-center"><%= "#{@customer.last_name}""#{@customer.first_name}" %>さんの会員情報編集</h2>
+      </div>
+      <div class="admin-customer-edit col-10 p-3">
+       <%= form_with model: @customer, url: admin_customer_path(@customer.id) do |f| %>
+        <table class="table table-borderless">
+          <tbody>
+            <tr>
+              <th>会員ID</th>
+              <td><%= @customer.id %></td>
+            </tr>
+            <tr>
+              <th>氏名</th>
+              <td><%= f.text_field :last_name, class: "admin-customer-editform pt-1 pb-1 rounded-pill" %> <%= f.text_field :first_name, class: "admin-customer-editform pt-1 pb-1 rounded-pill" %></td>
+            </tr>
+            <tr>
+              <th>フリガナ</th>
+              <td><%= f.text_field :last_name_kana, class: "admin-customer-editform pt-1 pb-1 rounded-pill" %> <%= f.text_field :first_name_kana, class: "admin-customer-editform pt-1 pb-1 rounded-pill" %></td>
+            </tr>
+            <tr>
+              <th>郵便番号</th>
+              <td><%= f.text_field :postal_code, class: "admin-customer-editform pt-1 pb-1 rounded-pill" %></td>
+            </tr>
+            <tr>
+              <th>住所</th>
+              <td><%= f.text_field :address, size: 70, class: "admin-customer-editform pt-1 pb-1 rounded-pill" %></td>
+            </tr>
+            <tr>
+              <th>電話番号</th>
+              <td><%= f.text_field :telephone_number, class: "admin-customer-editform pt-1 pb-1 rounded-pill" %></td>
+            </tr>
+            <tr>
+              <th>メールアドレス</th>
+              <td><%= f.text_field :email,  size: 50, class: "admin-customer-editform pt-1 pb-1 rounded-pill" %></td>
+            </tr>
+            <tr>
+              <th>会員ステータス</th>
+              <td>
+                <%= f.radio_button :is_valid, :false %>
+                <%= f.label :is_valid, "有効", value: false, class: "mr-3" %>
+                <%= f.radio_button :is_valid, :true %>
+                <%= f.label :is_valid, "退会", value: true %>
+              </td>
+            </tr>
+            <tr>
+              <th></th>
+              <td>
+                <%= f.submit "変更を保存", class: "btn btn-success" %>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      <% end %>
+      </div>
+    </div>
   </div>
-  <div class ="field">
-    <%= f.label :first_name %></br>
-    <%= f.text_field :first_name %>
-  </div>
-   <div class ="field">
-    <%= f.label :last_name_kana %></br>
-    <%= f.text_field :last_name_kana %>
-  </div>
-  <div class ="field">
-    <%= f.label :first_name_kanaa %></br>
-    <%= f.text_field :first_name_kana %>
-  </div>
-  <div class ="field">
-    <%= f.label :postal_code %></br>
-    <%= f.text_field :postal_code %>
-  </div>
-  <div class ="field">
-    <%= f.label :address %></br>
-    <%= f.text_field :address %>
-  </div>
-  <div class ="field">
-    <%= f.label :telephone_number %></br>
-    <%= f.text_field :telephone_number %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-  <%= f.submit '変更を保存' %>
-  <% end %>
+</div>

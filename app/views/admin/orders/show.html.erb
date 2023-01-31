@@ -1,2 +1,91 @@
-<h1>注文履歴詳細</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="admin-heading col-md-12">
+      <h3 class="mb-4 col-3 pt-2 pb-2">注文履歴詳細</h3>
+    </div>
+    <table class="table table-sm mb-3 admin-order-show-table">
+      <tbody>
+        <tr>
+          <th>購入者</th>
+          <td><%= link_to "#{@order.name}", "", class: "text-dark border-bottom border-dark" %></td>
+        </tr>
+        <tr>
+          <th>注文日</th>
+          <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+        </tr>
+        <tr>
+          <th>配送先</th>
+          <td><%= @order.address %></td>
+        </tr>
+        <tr>
+          <th>支払方法</th>
+          <td><%= @order.payment_method_i18n %></td>
+        </tr>
+        <tr>
+          <th>注文ステータス</th>
+          <td>
+            <%= form_with model: @order, url: admin_order_path(@order), local: true do |f| %>
+            <%= f.select :status, [["入金待ち", "入金待ち"], ["入金確認", "入金確認"], ["製作中", "製作中"], ["発送準備中", "発送準備中"], ["発送済み", "発送済み"]], class: "form-control" %>
+            <%= f.submit "更新", class: "btn ml-3 btn-dark btn-sm" %>
+            <% end %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="row mb-5">
+    <div class="col-7">
+      <table class="table mt-3 table-borderless table-hover rounded-top rounded-bottom table_border_radius admin-order-table">
+        <thead class="thead-dark">
+          <tr>
+            <th>商品名</th>
+            <th>単価（税込）</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th>製作ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @sum = 0 %>
+          <% @order_details.each do |order_detail| %>
+          <tr>
+            <td><%= order_detail.item.name %></td>
+            <td><%= order_detail.item.with_tax_price %></td>
+            <td><%= order_detail.amount %></td>
+            <td>
+              <% @products_price = order_detail.price * order_detail.amount %>
+              <%= @products_price %>
+            </td>
+            <td>
+            <%= form_with model: order_detail, url: admin_order_detail_path do |f| %>
+              <%= f.select :status, [["着手不可", "着手不可"], ["製作待ち", "製作待ち"], ["製作中", "製作中"], ["製作完了", "製作完了"]], class: "form-control" %>
+              <%= f.submit "更新", class: "btn ml-3 btn-dark btn-sm" %>
+            <% end %>
+          </td>
+            <% @sum += @products_price %>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col">
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <th>商品合計</th>
+            <td><%= @sum %>円</td>
+          </tr>
+          <tr>
+            <th>送料</th>
+            <td>800円</td>
+          </tr>
+          <tr>
+            <th>請求金額合計</th>
+            <td><%= @sum + 800 %>円</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+ 

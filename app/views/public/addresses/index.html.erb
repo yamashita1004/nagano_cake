@@ -1,19 +1,28 @@
-
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
 <h2>配達先登録/一覧</h2>
 <%= form_with model: @address, url: public_addresses_path do |f| %>
 
-
+  <div class="field mb-1">
 <th>郵便番号（ハイフンなし）</th>
-<td><%= f.text_field :postal_code %></td></br>
+<td><%= f.text_field :postal_code,class: 'rounded', placeholder: "0000000" %></td></br>
+</div>
+<div class="field mb-1">
 <th>住所</th>
-<td><%= f.text_field :address %></td></br>
+<td><%= f.text_field :address,class: 'rounded', placeholder: "東京都" %></td></br>
+</div>
+<div class="field mb-1">
 <th>宛名</th>
-<td><%= f.text_field :name %></td>
-
+<td><%= f.text_field :name, class: 'rounded', placeholder: "令和道子" %></td>
+</div>
+<div class="">
 <%= f.submit '新規登録' %>
+</div>
 <% end %>
          <div>
-        <table class='table table-hover table-inverse'>
+        <table class="table table-bordered border-dark col-9 mt-3 mb-5">
 
         <tr>
         <th>郵便番号</th>

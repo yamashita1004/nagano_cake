@@ -1,0 +1,18 @@
+<div class = "container">
+  <div class = "row">
+    <div class="px-3 mx-auto mt-5">
+       <h3 style="text-align:center"><strong>本当に退会しますか？</strong></h3>
+       </br></br>
+        <p style="text-align:center">
+          退会すると、会員情報の登録や</br>
+          これまでの閲覧履歴が閲覧できなくなります。</br>
+          退会する場合は、「退会する」をクリックしてください。</br>
+        </p>
+        <div class="mx-auto"><%= link_to '退会しない', public_path, class:'btn btn-primary offset-3' %> 
+        <%= link_to '退会する', public_customers_out_path, method: :patch, class:'btn btn-danger' %></div>
+    </div>
+  </div>  
+    <div class="row mx-auto">
+        
+    </div>
+</div>

@@ -1,1 +1,31 @@
-<h1>注文履歴一覧</h1>
+
+<div class="container">
+  <div class="row">
+    <div class="admin-heading col-3">
+      <h2 class="mb-4 pt-3 pb-3 text-center">注文履歴一覧</h2>
+    </div>
+    <div class="col-8 mx-auto">
+      <table class="table table-hover rounded-top rounded-bottom table_border_radius admin-order-table">
+        <thead class="thead-dark">
+          <tr>
+            <th>購入日時</th>
+            <th>購入者</th>
+            <th>注文個数</th>
+            <th>注文ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @orders.each do |order| %>
+          <tr>
+            <td><%= link_to "#{order.created_at.strftime('%Y/%m/%d %H:%M:%S')}", admin_order_path(order.id), class: "text-dark border-bottom border-dark" %></td>
+            <td><%= order.customer.last_name %><%= order.customer.first_name %></td>
+            <td><%= order.order_details.sum(:amount) %></td>
+            <td></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>

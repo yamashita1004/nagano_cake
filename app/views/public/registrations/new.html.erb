@@ -1,60 +1,63 @@
-<h2>Sign up</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h4 class="mb-5 text-color col-3 text-center">新規会員登録</h4>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "public/shared/error_messages", resource: resource %>
-
-  <div class ="field">
-    <%= f.label :last_name %></br>
-    <%= f.text_field :last_name %>
-  </div>
-  <div class ="field">
-    <%= f.label :first_name %></br>
-    <%= f.text_field :first_name %>
-  </div>
-   <div class ="field">
-    <%= f.label :last_name_kana %></br>
-    <%= f.text_field :last_name_kana %>
-  </div>
-  <div class ="field">
-    <%= f.label :first_name_kanaa %></br>
-    <%= f.text_field :first_name_kana %>
-  </div>
-  <div class ="field">
-    <%= f.label :postal_code %></br>
-    <%= f.text_field :postal_code %>
-  </div>
-  <div class ="field">
-    <%= f.label :address %></br>
-    <%= f.text_field :address %>
-  </div>
-  <div class ="field">
-    <%= f.label :telephone_number %></br>
-    <%= f.text_field :telephone_number %>
-  </div>
-
-
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
+  <div><%= render "public/shared/error_messages", resource: resource %></div>
+  <div class="sign_up-pages col-12">
+            <div class="field mb-1">
+            <%= f.label :"名前.                     (姓)", class: 'col-3' %>
+            
+            <%= f.text_field :last_name, autofocus: true, class: 'rounded', placeholder: "令和" %>
+            <%= f.label :" (名) ", class: '' %>
+            <%= f.text_field :first_name, autofocus: true, class: 'rounded', placeholder: "道子" %>
+          </div>
+          <div class="field mb-1">
+            <%= f.label :"フリガナ.                 (ｾｲ)", class: 'col-3' %>
+            
+            <%= f.text_field :last_name_kana, autofocus: true, class: 'rounded', placeholder: "レイワ" %>
+            <%= f.label :" (ﾒｲ) ", class: '' %>
+            <%= f.text_field :first_name_kana, autofocus: true, class: 'rounded', placeholder: "ミチコ" %>
+          </div>
+          <div class="field mb-1">
+            <%= f.label :"メールアドレス", class: 'col-3' %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'rounded', placeholder: "sample@examle.com" %>
+          </div>
+          <div class="field mb-1">
+            <%= f.label :"郵便番号(ハイフンなし)", class: 'col-3' %>
+            <%= f.text_field :postal_code, autofocus: true, class: 'rounded', placeholder: "0000000" %>
+          </div>
+          <div class="field mb-1">
+            <%= f.label :"住所", class: 'col-3' %>
+            <%= f.text_field :address, autofocus: true, class: 'rounded', placeholder: "東京都渋谷区代々木神園町0-0" %>
+          </div>
+           <div class="field mb-1">
+            <%= f.label :"電話番号(ハイフンなし)", class: 'col-3' %>
+            <%= f.text_field :telephone_number, autofocus: true, class: 'rounded', placeholder: "00000000000" %>
+          </div>
+          <div class="field mb-1">
+            <%= f.label :"パスワード(6文字以上)", class: 'col-3' %>
+            <% if @minimum_password_length %>
+            <% end %>
+            <%= f.password_field :password, autocomplete: "new-password", class: 'rounded' %>
+          </div>
+        
+          <div class="field mb-1">
+            <%= f.label :"パスワード(確認用)", class: 'col-3' %>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'rounded' %>
+          </div>
+          <div class="actions">
+            <%= f.label :" ", class: 'col-3' %>
+            <%= f.submit "新規登録", class: 'btn  btn-success col-2' %>
+          </div>
+          </div>
 <% end %>
+ <h2 class="mt-5 mb-4 login-color col-4 text-center">既に登録済みの方</h2>
+        <div class="ml-5">
+          <p><%= link_to "こちら", new_customer_session_path, class: 'text-decolation' %>からログインしてください。</p>
+        </div>
 
-<%= render "public/shared/links" %>
+   </div>
+  </div>
+</div>

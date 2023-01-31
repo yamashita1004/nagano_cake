@@ -1,3 +1,5 @@
+
+
 <%= form_with model: @item, url: admin_item_path(@item.id) do |f| %>
 <h4>画像</h4>
 <%= f.file_field :image, accept: "image/*" %>
@@ -10,6 +12,6 @@
 <h4>販売ステータス</h4>
   <label><%= f.radio_button :is_active, true %>販売中</label>
 	<label><%= f.radio_button :is_active, false %>販売停止</label></br>
-<%= f.submit '変更を保存' %>
+<%= f.submit '変更を保存', class: 'btn btn-success' %>
 
 <% end %>
