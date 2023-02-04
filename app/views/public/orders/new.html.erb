@@ -1,5 +1,5 @@
-<h1>Public::Orders#new</h1>
-<p>Find me in app/views/public/orders/new.html.erb</p>
+<h1>注文情報入力</h1>
+
 <p>支払い方法</p>
 <%= form_with model: @order, url: public_orders_confirm_path do |f| %>
 <%= f.radio_button :payment_method, "credit_card" %>
